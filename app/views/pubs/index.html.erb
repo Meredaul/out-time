@@ -1,14 +1,9 @@
 <h1>London Pubs</h1>
 
 <div class="row">
-  <% @pubs.each do |pub| %>
+  <% @pubs.each do |p| %>
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <%= link_to pub_path(pub) do %>
-        <div class="pub-card" style="background-image: url('<%= pub.image_url %>')">
-          <h3 class="pub-card-name"><%= pub.name %></h3>
-          <p class="pub-card-location"><%= pub.location %></p>
-        </div>
-      <% end %>
+      <%= render 'pub-card', drinking_establishemnt: p %>
     </div>
   <% end %>
 </div>

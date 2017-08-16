@@ -6,3 +6,42 @@
   <%= image_tag @pub.image_url, height: 200 %>
 </div>
 
+<hr>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-6">
+    <ul>
+    <% @pub.reviews.each do |review| %>
+      <li>
+        <%= review.content %>
+        <% review.rating.times do %>
+          <i class="fa fa-star"></i>
+        <% end %>
+        <% (5 - review.rating).times do %>
+          <i class="fa fa-star-o"></i>
+        <% end %>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+  <div class="col-xs-12 col-sm-6">
+    <%= simple_form_for [@pub, @review] do |f| %>
+      <%= f.input :content %>
+      <%= f.input :rating, collection: (0..5) %>
+      <%= f.submit class: 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
